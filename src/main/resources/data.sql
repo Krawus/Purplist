@@ -1,0 +1,1 @@
+-- script that will run everytime app starts
