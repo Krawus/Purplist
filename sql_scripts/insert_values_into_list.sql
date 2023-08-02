@@ -1,0 +1,1 @@
+INSERT INTO list(name, content) value ("test_list1" ,'["content1", "content2"]')
