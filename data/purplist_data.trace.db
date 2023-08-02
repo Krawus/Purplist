@@ -926,3 +926,18 @@ INSERT INTO LIST2( NAME ) value ('AAAAAAB') [42001-214]
 2023-08-02 21:54:57 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO LIST2( NAME ) [*]value ('AB')"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
 INSERT INTO LIST2( NAME ) value ('AB') [42001-214]
+2023-08-02 21:59:22 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) [*]value (""test_list1"" ,'[""content1"", ""content2""]')"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO list(name, content) value ("test_list1" ,'["content1", "content2"]') [42001-214]
+2023-08-02 21:59:32 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) [*]value (""test_list1"" ,'[""content1"", ""content2""]')"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO list(name, content) value ("test_list1" ,'["content1", "content2"]') [42001-214]
+2023-08-02 21:59:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) [*]value (""test_list1"" ,'[""content1"", ""content2""]')"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO list(name, content) value ("test_list1" ,'["content1", "content2"]') [42001-214]
+2023-08-02 21:59:42 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) [*]value ('test_list1' ,'[""content1"", ""content2""]')"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO list(name, content) value ('test_list1' ,'["content1", "content2"]') [42001-214]
+2023-08-02 21:59:43 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) [*]value ('test_list1' ,'[""content1"", ""content2""]')"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO list(name, content) value ('test_list1' ,'["content1", "content2"]') [42001-214]
