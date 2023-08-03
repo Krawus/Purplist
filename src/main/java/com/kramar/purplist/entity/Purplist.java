@@ -32,7 +32,7 @@ public class Purplist {
     @Column(name="name")
     private String name;
 
-    // @Lob
+    @Lob
     @Column(name="content")
     @JdbcTypeCode(SqlTypes.JSON)
     private List<String> content;
