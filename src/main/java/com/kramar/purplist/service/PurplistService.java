@@ -24,15 +24,43 @@ public class PurplistService {
     }
     public Purplist findById(int id){
 
-        Optional<Purplist> searchResult = purplistReository.findById(id);
+        return purplistReository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Did not find employee id - " + id));
+    }
+
+    public Purplist save(Purplist purplist){
+        return purplistReository.save(purplist);
+    }
+
+    public Purplist update(Purplist purplistDetails, int id){
+
+        return purplistReository.findById(id)
+        .map(purplist -> {
+          purplist.setName(purplistDetails.getName());
+          purplist.setContent(purplistDetails.getContent());
+          return purplistReository.save(purplist);
+        })
+        .orElseGet(() -> {
+          purplistDetails.setId(id);
+          return purplistReository.save(purplistDetails);
+        });
+
+
+        // Purplist purplistToUpdate = findById(id);
+
+        // purplistToUpdate.setContent(purplistDetails.getContent());
+        // purplistToUpdate.setName(purplistDetails.getName());
+
+        // return purplistReository.save(purplistToUpdate);
         
-        if (searchResult.isPresent()){
-            return searchResult.get();
-        }
-        else{
-            throw new RuntimeException("Did not find employee id - " + id);
-        }
+    }
+
+    public void deleteById(int id){
+        purplistReository.deleteById(id);
     }
 
 
+
 }
+
+
