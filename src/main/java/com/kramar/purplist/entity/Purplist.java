@@ -1,6 +1,7 @@
 package com.kramar.purplist.entity;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -35,6 +36,6 @@ public class Purplist {
     @Lob
     @Column(name="content")
     @JdbcTypeCode(SqlTypes.JSON)
-    private List<String> content;
+    private Map<String, Boolean> content;
     
 }

@@ -1025,3 +1025,167 @@ INSERT INTO list(name) value ('test list') [42001-214]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) values ('test_list1' ,'[""content1"", ""content2""]' FORMAT JSON)\000d\000a[*]INSERT INTO list(name, content) values ('test_list2' ,'[""content3"", ""content4"", ""content5""]' FORMAT JSON)"; SQL statement:
 INSERT INTO list(name, content) values ('test_list1' ,'["content1", "content2"]' FORMAT JSON)
 INSERT INTO list(name, content) values ('test_list2' ,'["content3", "content4", "content5"]' FORMAT JSON) [42000-214]
+2023-08-04 17:26:48 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) values ('test_list1' ,'[""content1"", ""content2""]' FORMAT JSON)\000d\000a[*]INSERT INTO list(name, content) values ('test_list2' '{""content1"": 0, ""content2"": 1}' FORMAT JSON)\000d\000a\000d\000a-- '{""screen"": ""50 inch"","; SQL statement:
+INSERT INTO list(name, content) values ('test_list1' ,'["content1", "content2"]' FORMAT JSON)
+INSERT INTO list(name, content) values ('test_list2' '{"content1": 0, "content2": 1}' FORMAT JSON)
+
+-- '{"screen": "50 inch", [42000-214]
+2023-08-04 17:27:19 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO list(name, content) values ('test_list2' '{content1": 0, "content2": 1}' FORMAT JSON) [21002-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.command.dml.Insert.doPrepare(Insert.java:295)
+	at org.h2.command.dml.DataChangeStatement.prepare(DataChangeStatement.java:37)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2023-08-04 17:28:17 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- INSERT INTO list(name, content) values ('test_list1' ,'[""content1"", ""content2""]' FORMAT JSON)\000d\000aINSERT INTO list(name, content) [*]value ('test_list2' '{content1"": 0, ""content2"": 1}' FORMAT JSON)"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+-- INSERT INTO list(name, content) values ('test_list1' ,'["content1", "content2"]' FORMAT JSON)
+INSERT INTO list(name, content) value ('test_list2' '{content1": 0, "content2": 1}' FORMAT JSON) [42001-214]
+2023-08-04 17:28:35 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO list(name, content) values ('test_list2' '{content1": 0, "content2": 1}' FORMAT JSON) [21002-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.command.dml.Insert.doPrepare(Insert.java:295)
+	at org.h2.command.dml.DataChangeStatement.prepare(DataChangeStatement.java:37)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2023-08-04 17:28:46 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "{content1"": 0, ""content2"": 1}"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '{content1": 0, "content2": 1}' FORMAT JSON) [22018-214]
+2023-08-04 17:28:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "{content1"": 0, ""content2"": 1}"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '{content1": 0, "content2": 1}' FORMAT JSON) [22018-214]
+2023-08-04 17:28:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "{content1"": 0, ""content2"": 1}"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '{content1": 0, "content2": 1}' FORMAT JSON) [22018-214]
+2023-08-04 17:29:05 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "{content1"": 0, ""content2"": 1}"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '{content1": 0, "content2": 1}' FORMAT JSON) [22018-214]
+2023-08-04 17:29:06 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "{content1"": 0, ""content2"": 1}"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '{content1": 0, "content2": 1}' FORMAT JSON) [22018-214]
+2023-08-04 17:29:16 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "[content1"": 0, ""content2"": 1]"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '[content1": 0, "content2": 1]' FORMAT JSON) [22018-214]
+2023-08-04 17:29:16 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "[content1"": 0, ""content2"": 1]"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '[content1": 0, "content2": 1]' FORMAT JSON) [22018-214]
+2023-08-04 17:29:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "[""content1"": 0, ""content2"": 1}"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', '["content1": 0, "content2": 1}' FORMAT JSON) [22018-214]
+2023-08-04 17:30:21 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO list(name, content) values ('test_list2', \0009'{""screen"": ""50 inch"", ""resolution"": ""2048 x 1152 pixels"", ""ports"": {""hdmi"": 1, ""usb"": 3}, ""speakers"": {""left"": ""10 watt"", ""right"": ""10 watt""}}' FORMAT JSON)\000d\000a\000d\000a[*]SELECT * FROM LIST"; SQL statement:
+INSERT INTO list(name, content) values ('test_list2', 	'{"screen": "50 inch", "resolution": "2048 x 1152 pixels", "ports": {"hdmi": 1, "usb": 3}, "speakers": {"left": "10 watt", "right": "10 watt"}}' FORMAT JSON)
+
+SELECT * FROM LIST [42000-214]
+2023-08-04 17:32:29 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM LIST"; expected "identifier"; SQL statement:
+DELETE * FROM LIST [42001-214]
+2023-08-04 17:32:31 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM LIST"; expected "identifier"; SQL statement:
+DELETE * FROM LIST [42001-214]
+2023-08-04 17:32:36 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM LIST"; expected "identifier"; SQL statement:
+DELETE * FROM LIST [42001-214]
