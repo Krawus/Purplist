@@ -1,8 +1,9 @@
 CREATE TABLE users (
-  username VARCHAR(50) NOT NULL,
+  id INT NOT NULL auto_increment,
+  username VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(100) NOT NULL,
   enabled TINYINT NOT NULL DEFAULT 1,
-  PRIMARY KEY (username)
+  PRIMARY KEY (id)
 );
   
 CREATE TABLE authorities (
