@@ -2,13 +2,9 @@ package com.kramar.purplist.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -28,7 +24,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="lists")
+@Table(name="users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -36,39 +32,43 @@ import lombok.Setter;
 @JsonIdentityInfo(
   generator = ObjectIdGenerators.PropertyGenerator.class, 
   property = "id")
-public class Purplist {
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name = "username")
+    private String username;
 
-    // @Lob
-    @Column(name="content")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private Map<String, Boolean> content;
+    @Column(name = "password")
+    private String password;
 
-    // @ManyToMany( fetch = FetchType.LAZY,
+    @Column(name = "enabled")
+    boolean enabled;
+
+    // @ManyToMany(fetch = FetchType.LAZY,
     //     cascade = {
     //                         CascadeType.DETACH,
     //                         CascadeType.MERGE,
     //                         CascadeType.PERSIST,
     //                         CascadeType.REFRESH
     //                     })
-    @ManyToMany(mappedBy = "purplists")
-    // @JoinTable(
-    //         name = "users_lists_join_table", 
-    //         joinColumns = @JoinColumn(name = "list_id"), 
-    //         inverseJoinColumns = @JoinColumn(name = "user_id")
-    private List<User> users;
+    @ManyToMany
+    @JoinTable(
+            name = "users_lists_join_table", 
+            joinColumns = @JoinColumn(name = "user_id"), 
+            inverseJoinColumns = @JoinColumn(name = "list_id"))
+    private List<Purplist> purplists;
 
-    void addUser(User user){
-
-        if(this.users == null){
-            users = new ArrayList<User>();
+    public void addPurplist(Purplist purplist){
+        if (this.purplists == null){
+            purplists = new ArrayList<Purplist>();
         }
-        users.add(user);
+        purplists.add(purplist);
+        
     }
+
     
 }

@@ -54,17 +54,6 @@ public class ApiListController {
         return purplistService.update(purplistDetails, purplistId);
     }
 
-    @GetMapping("/test_add")
-    public Purplist testPurpAdd(){
-
-        Map<String, Boolean> listContent = new HashMap<String, Boolean>(Map.of("item1", false, 
-                                            "item2", false, "item3", false, "item4", false));
-        Purplist newPurplist = new Purplist(12, "cmd list", listContent);
-
-
-        return purplistService.save(newPurplist);
-    }
-
     @DeleteMapping("/lists/{purplistId}")
     void deleteList(@PathVariable int purplistId){
         purplistService.deleteById(purplistId);
