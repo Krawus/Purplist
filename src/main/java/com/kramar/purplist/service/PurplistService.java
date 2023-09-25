@@ -38,20 +38,13 @@ public class PurplistService {
         .map(purplist -> {
           purplist.setName(purplistDetails.getName());
           purplist.setContent(purplistDetails.getContent());
+          purplist.setUsers(purplistDetails.getUsers());
           return purplistReository.save(purplist);
         })
         .orElseGet(() -> {
           purplistDetails.setId(id);
           return purplistReository.save(purplistDetails);
         });
-
-
-        // Purplist purplistToUpdate = findById(id);
-
-        // purplistToUpdate.setContent(purplistDetails.getContent());
-        // purplistToUpdate.setName(purplistDetails.getName());
-
-        // return purplistReository.save(purplistToUpdate);
         
     }
 

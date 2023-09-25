@@ -33,6 +33,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @JsonIdentityInfo(
   generator = ObjectIdGenerators.PropertyGenerator.class, 
   property = "id")
@@ -49,18 +50,8 @@ public class Purplist {
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, Boolean> content;
 
-    // @ManyToMany( fetch = FetchType.LAZY,
-    //     cascade = {
-    //                         CascadeType.DETACH,
-    //                         CascadeType.MERGE,
-    //                         CascadeType.PERSIST,
-    //                         CascadeType.REFRESH
-    //                     })
+
     @ManyToMany(mappedBy = "purplists")
-    // @JoinTable(
-    //         name = "users_lists_join_table", 
-    //         joinColumns = @JoinColumn(name = "list_id"), 
-    //         inverseJoinColumns = @JoinColumn(name = "user_id")
     private List<User> users;
 
     void addUser(User user){

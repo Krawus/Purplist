@@ -38,11 +38,6 @@ public class ApiListController {
         return purplistService.findById(purplistId);
     }
 
-    @GetMapping("/test")
-    public Purplist testPurp(){
-        return purplistService.findById(9);
-    }
-
     @PostMapping("/lists")
     public Purplist postPurplist(@RequestBody Purplist newPurplist){
         return purplistService.save(newPurplist);

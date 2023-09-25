@@ -48,13 +48,6 @@ public class User {
     @Column(name = "enabled")
     boolean enabled;
 
-    // @ManyToMany(fetch = FetchType.LAZY,
-    //     cascade = {
-    //                         CascadeType.DETACH,
-    //                         CascadeType.MERGE,
-    //                         CascadeType.PERSIST,
-    //                         CascadeType.REFRESH
-    //                     })
     @ManyToMany
     @JoinTable(
             name = "users_lists_join_table", 
