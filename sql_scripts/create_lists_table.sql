@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS list;
-CREATE TABLE list(
+DROP TABLE IF EXISTS lists;
+CREATE TABLE lists(
 		id int NOT NULL auto_increment,
         name varchar(50),
         content JSON,

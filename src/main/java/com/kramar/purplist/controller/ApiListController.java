@@ -38,11 +38,6 @@ public class ApiListController {
         return purplistService.findById(purplistId);
     }
 
-    @GetMapping("/test")
-    public Purplist testPurp(){
-        return purplistService.findById(9);
-    }
-
     @PostMapping("/lists")
     public Purplist postPurplist(@RequestBody Purplist newPurplist){
         return purplistService.save(newPurplist);
@@ -52,17 +47,6 @@ public class ApiListController {
     @PutMapping("/lists/{purplistId}")
     public Purplist putPurplist(@RequestBody Purplist purplistDetails, @PathVariable int purplistId){
         return purplistService.update(purplistDetails, purplistId);
-    }
-
-    @GetMapping("/test_add")
-    public Purplist testPurpAdd(){
-
-        Map<String, Boolean> listContent = new HashMap<String, Boolean>(Map.of("item1", false, 
-                                            "item2", false, "item3", false, "item4", false));
-        Purplist newPurplist = new Purplist(12, "cmd list", listContent);
-
-
-        return purplistService.save(newPurplist);
     }
 
     @DeleteMapping("/lists/{purplistId}")

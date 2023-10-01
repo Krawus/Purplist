@@ -15,3 +15,12 @@ INSERT INTO users (username, password, enabled)
 INSERT INTO authorities (username, authority)
   values ('admin', 'ROLE_ADMIN');
   
+  
+INSERT INTO users (username, password, enabled)
+  values ('user1',
+    '{noop}user1',
+    1);
+
+INSERT INTO authorities (username, authority)
+  values ('user1', 'ROLE_USER');
+  
