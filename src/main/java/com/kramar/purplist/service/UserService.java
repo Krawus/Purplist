@@ -52,4 +52,10 @@ public class UserService {
            });
         
     }
+
+
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username)
+               .orElseThrow(() -> new RuntimeException("Did not find user with username - " + username)) ;
+    }
 }

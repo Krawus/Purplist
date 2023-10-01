@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kramar.purplist.entity.Purplist;
-import com.kramar.purplist.repository.PurplistReository;
+import com.kramar.purplist.repository.PurplistRepository;
 
 @Service
 public class PurplistService {
 
-    private PurplistReository purplistReository;
+    private PurplistRepository purplistReository;
 
     @Autowired
-    public PurplistService(PurplistReository purplistReository){
+    public PurplistService(PurplistRepository purplistReository){
         this.purplistReository = purplistReository;
     }
 
@@ -51,8 +51,6 @@ public class PurplistService {
     public void deleteById(int id){
         purplistReository.deleteById(id);
     }
-
-
 
 }
 
