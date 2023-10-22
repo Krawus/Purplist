@@ -9,6 +9,7 @@ import org.hibernate.type.SqlTypes;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -50,16 +51,29 @@ public class Purplist {
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, Boolean> content;
 
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "purplists")
     private List<User> users;
 
-    void addUser(User user){
+
+    public void addUser(User user){
 
         if(this.users == null){
             users = new ArrayList<User>();
         }
         users.add(user);
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", content='" + getContent() + "'" +
+            ", users='" + getUsers() + "'" +
+            "}";
+    }
+
     
 }

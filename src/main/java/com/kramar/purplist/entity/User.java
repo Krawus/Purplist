@@ -55,12 +55,23 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "list_id"))
     private List<Purplist> purplists;
 
+
     public void addPurplist(Purplist purplist){
         if (this.purplists == null){
             purplists = new ArrayList<Purplist>();
         }
         purplists.add(purplist);
         
+    }
+
+    public void deletePurplist(int purplistIndex){
+        this.purplists.remove(purplistIndex);
+    }
+
+    public void editPurplist(int purplistIndex, Purplist updatedPurplist){
+        
+        this.purplists.set(purplistIndex, updatedPurplist);
+
     }
 
     
