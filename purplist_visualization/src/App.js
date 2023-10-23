@@ -14,11 +14,18 @@ const FIRST_PAGE_OPTIONS = {
 function App() {
 
   const [currentForm,setCurrentForm] = useState(0);
+
+
+  const toggleForm = (formName)=>{
+    setCurrentForm(FIRST_PAGE_OPTIONS[formName]);
+}
+
+
   return (
     <div className='wrapper'>
       {
         
-        currentForm === FIRST_PAGE_OPTIONS["login"] ? <Login/> : <Register/>
+        currentForm === FIRST_PAGE_OPTIONS["login"] ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
       }
       {/* <Login path='/' /> */}
 
