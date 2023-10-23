@@ -10,9 +10,9 @@ export const Register = (props) =>{
     }
 
     return(
-        <>
+        <div className="auth-form-container">
         <h1>Purplist</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="register-form">
             <label htmlFor="name">Full name</label>
             <input value={name} name="name" id="name" placeholder="Jan Kowalski"></input>
             <label htmlFor="email">email</label>
@@ -20,9 +20,9 @@ export const Register = (props) =>{
 
             <label htmlFor="password">password</label>
             <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="********" name="password" id="password"/>
-            <button type="submit">Log In</button>
+            <button className="submit-btn" type="submit">Log In</button>
         </form>
-        <button onClick={()=>props.onFormSwitch('login')}>Already have an account? Log in here.</button>
-        </>  
+        <button className="link-btn" onClick={()=>props.onFormSwitch('login')}>Already have an account? Log in here.</button>
+        </div>  
     )
 }

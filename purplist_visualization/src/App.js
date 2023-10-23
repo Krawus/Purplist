@@ -22,7 +22,7 @@ function App() {
 
 
   return (
-    <div className='wrapper'>
+    <div className='App'>
       {
         
         currentForm === FIRST_PAGE_OPTIONS["login"] ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
