@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: rgb(2, 0, 36);
+  background-size: 400% 400%;
+  background-image: linear-gradient(56deg, rgba(2, 0, 36, 1) 10%, rgba(121, 9, 110, 1) 52%, rgba(0, 127, 255, 1) 110%);
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.auth-form-container,
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 5rem;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    margin: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 50px -6px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 50px -6px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 50px -6px rgba(0, 0, 0, 1);
+  }
+
+}
+
+
+.auth-form-container label {
+  text-align: left;
+  padding: 0.25rem 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.auth-form-container h1 {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.auth-form-container input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+@property --myColor1 {
+  syntax: '<color>';
+  initial-value: rgba(2, 0, 36, 0.9);
+  inherits: false;
+}
+
+@property --myColor2 {
+  syntax: '<color>';
+  initial-value: rgba(121, 9, 110, 0.9);
+  inherits: false;
+}
+
+@property --myColor3 {
+  syntax: '<color>';
+  initial-value: rgba(0, 127, 255, 0.9);
+  inherits: false;
+}
+
+.auth-form-container .submit-btn {
+  color: white;
+  background: linear-gradient(56deg, var(--myColor1) -200%, var(--myColor2) -52%, var(--myColor3) 110%);
+  border: 0px solid white;
+  transition: --myColor1 1s, --myColor2 1s, --myColor3 1s, border-width 7s ease-in-out;
+}
+
+.auth-form-container .submit-btn:hover {
+  --myColor2: rgba(0, 127, 255, 0.5);
+  --myColor3: rgba(121, 9, 110, 1);
+  --myColor1: rgba(2, 0, 36, 1);
+  border-width: 2px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgba(121, 9, 110, 1);
+}
+
+.link-btn {
+  background: none;
+  color: white;
+  text-decoration: underline;
+}
