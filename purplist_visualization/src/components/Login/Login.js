@@ -1,4 +1,5 @@
 import React,{useState} from "react"
+import Button from "../Common/Button";
 export const Login = (props) =>{
     const [login,setLogin] = useState('');
     const [password,setPassword] = useState('');
@@ -17,7 +18,7 @@ export const Login = (props) =>{
 
             <label htmlFor="password">password</label>
             <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="********" name="password" id="password"/>
-            <button className="submit-btn" type="submit">Log In</button>
+            <Button styleClass="submit-btn" type="submit" text="Log In"/>
         </form>
         <button className="link-btn" onClick={()=>props.onFormSwitch('register')}>Don't have an account? Register here.</button>
         </div>            
