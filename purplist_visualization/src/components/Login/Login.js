@@ -7,6 +7,20 @@ export const Login = (props) =>{
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(login,password);
+
+        const requestBody = new FormData()
+        requestBody.append('username',login)
+        requestBody.append('password',password)
+
+        fetch('http://localhost:8080/login',{
+            method:"POST",
+            mode:"no-cors",
+            headers:{
+              'Content-Type': 'multipart/form-data'
+              //   'Content-Type': 'application/json',
+            },
+            body:requestBody,
+        }).then(response => console.log(response))
     }
 
     return(
