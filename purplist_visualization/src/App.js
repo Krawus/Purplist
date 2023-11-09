@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Preferences from './components/Preferences/Preferences';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
+import {Main} from "./components/Main/Main";
 
 const FIRST_PAGE_OPTIONS = {
   "login" :0,
@@ -23,10 +24,11 @@ function App() {
 
   return (
     <div className='App'>
-      {
-        
-        currentForm === FIRST_PAGE_OPTIONS["login"] ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-      }
+      {/*{*/}
+
+      {/*  currentForm === FIRST_PAGE_OPTIONS["login"] ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>*/}
+      {/*}*/}
+      <Main></Main>
       {/* <Login path='/' /> */}
 
       {/* <BrowserRouter>

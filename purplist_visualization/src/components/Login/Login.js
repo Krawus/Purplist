@@ -4,23 +4,26 @@ export const Login = (props) =>{
     const [login,setLogin] = useState('');
     const [password,setPassword] = useState('');
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(login,password);
+        // console.log(login,password);
 
-        const requestBody = new FormData()
-        requestBody.append('username',login)
-        requestBody.append('password',password)
-
-        fetch('http://localhost:8080/login',{
+        // const requestBody = new FormData()
+        // requestBody.append('username',login)
+        // requestBody.append('password',password)
+        const requestBody = {
+            "username": login,
+            "password": password
+        }
+        await fetch('http://localhost:8000/login',{
             method:"POST",
             mode:"no-cors",
             headers:{
-              'Content-Type': 'multipart/form-data'
-              //   'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body:requestBody,
-        }).then(response => console.log(response))
+            body:JSON.stringify(requestBody),
+            // body:requestBody,
+        }).then(response => response.json()).then(json => console.log('json',json))
     }
 
     return(
