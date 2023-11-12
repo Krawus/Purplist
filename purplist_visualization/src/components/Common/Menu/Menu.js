@@ -1,12 +1,12 @@
-import Ract,{useState} from "react";
+import React,{useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import './Menu.css'
 
 
-export default const Menu = ()=>{
+export default const Menu = ({show,children,width,height,...props})=>{
     return (
-        <div>
-            test
+        <div className={`menu-modal ${show ? 'active' : ''}`} {...props}>
+            {children}
         </div>
     )
 }
