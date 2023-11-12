@@ -24,6 +24,7 @@ export const Main = ()=>{
 
     return(
         <div className={'main-container'}>
+            <Menu show={isUserModalOpen}></Menu>
             <div className="top-bar">
                 <div >
                     <Button className={`top-bar-sidebar-icon ${isMainMenuOpen ? 'active' : ''}`} onClick={openLeftMenu}>
@@ -41,10 +42,7 @@ export const Main = ()=>{
                     <div className="user-icon" onClick={handlerUserClick}>
                         {userShortcut}
                     </div>{
-                    <Menu show={isUserModalOpen}></Menu>
                 }
-
-                    <Menu></Menu>
                 </div>
 
             </div>

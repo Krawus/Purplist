@@ -15,15 +15,14 @@
     background-color: var(--background-light);
 }
 .top-bar {
-    /*--gradient: linear-gradient(56deg, rgba(2, 0, 36, 1) 10%, rgba(121, 9, 110, 1) 52%, rgba(0, 127, 255, 1) 110%);*/
     width: 100vw;
     height: 50px;
-    /*background-image: var(--gradient);*/
     background-color: var(--main);
     display: flex;
     flex-direction: row;
     align-items: center;
     position: absolute;
+    justify-content: space-between;
     top: 0;
     z-index: 100;
     -webkit-box-shadow: 0px 8px 40px -10px var(--main);
@@ -36,15 +35,16 @@
     font-weight: bold;
     font-size: 20px;
     padding: 5px 15px;
-    position: absolute;
-    right:50%
+    text-anchor: middle;
+    display: inline-flex;
 }
 
 .top-bar .right-menu{
-    display: flex;
+    display: inline-flex;
     height: 50px;
-    position: absolute;
+    /*position: absolute;*/
     right: 10px;
+
 }
 .top-bar .user-icon {
     display: flex;
