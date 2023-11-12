@@ -1,5 +1,5 @@
 import React,{useState} from "react"
-import Button from "../Common/Button";
+import Button from "../Common/Button/Button";
 export const Register = (props) =>{
     const [login,setLogin] = useState('');
     const [password,setPassword] = useState('');
