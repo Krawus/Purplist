@@ -35,8 +35,10 @@
 
 @media screen and (min-width: 600px) {
   .auth-form-container {
-    padding: 5rem;
-    /* border: 1px solid white; */
+    /*position: relative;*/
+    right: 5%;
+    padding: 3rem;
+    min-width: 30%;
     border-radius: 10px;
     margin: 0.5rem;
     background-color: rgb(255, 255, 255);
@@ -60,6 +62,7 @@
   font-size: 3rem;
   font-weight: 600;
   background: var(--gradient);
+  margin-bottom: 60px;
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   background-clip: text;
