@@ -4,10 +4,11 @@
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: black;
   background: rgb(2, 0, 36);
   background-size: 400% 400%;
-  background-image: linear-gradient(56deg, rgba(2, 0, 36, 1) 10%, rgba(121, 9, 110, 1) 52%, rgba(0, 127, 255, 1) 110%);
+  --gradient: linear-gradient(56deg, rgba(2, 0, 36, 1) 10%, rgba(121, 9, 110, 1) 52%, rgba(0, 127, 255, 1) 110%);
+  background-image: var(--gradient);
   animation: gradient 15s ease infinite;
 }
 
@@ -34,11 +35,13 @@
 
 @media screen and (min-width: 600px) {
   .auth-form-container {
-    padding: 5rem;
-    /* border: 1px solid white; */
+    /*position: relative;*/
+    right: 5%;
+    padding: 3rem;
+    min-width: 30%;
     border-radius: 10px;
     margin: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
     -webkit-box-shadow: 0px 0px 50px -6px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 0px 50px -6px rgba(0, 0, 0, 1);
     box-shadow: 0px 0px 50px -6px rgba(0, 0, 0, 1);
@@ -57,14 +60,27 @@
 
 .auth-form-container h1 {
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: 600;
+  background: var(--gradient);
+  margin-bottom: 60px;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .auth-form-container input {
   margin: 0.5rem 0;
   padding: 1rem;
-  border: none;
-  border-radius: 10px;
+  border-bottom: 2px solid transparent;
+  border-image: var(--gradient);
+  border-image-slice: 1;
+  border-width: 0px 0px 2px 0px;
+}
+
+.auth-form-container input[type="text"]:focus {
+  outline: none !important;
+  border-width: 2px
 }
 
 @property --myColor1 {
@@ -88,20 +104,22 @@
 .auth-form-container .submit-btn {
   color: white;
   background: linear-gradient(56deg, var(--myColor1) -200%, var(--myColor2) -52%, var(--myColor3) 110%);
-  border: 0px solid white;
-  transition: --myColor1 1s, --myColor2 1s, --myColor3 1s, border-width 7s ease-in-out;
+  /* border: 0px solid gold; */
+  box-shadow: inset 0px 0px 0px 0px black;
+  transition: --myColor1 1s, --myColor2 1s, --myColor3 1s, box-shadow 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .auth-form-container .submit-btn:hover {
   --myColor2: rgba(0, 127, 255, 0.5);
   --myColor3: rgba(121, 9, 110, 1);
   --myColor1: rgba(2, 0, 36, 1);
-  border-width: 2px;
+  box-shadow: inset 0px 0px 0px 1px goldenrod;
+  color: goldenrod;
 }
 
 button {
   border: none;
-  background-color: white;
+  background-color: black;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -110,6 +128,10 @@ button {
 
 .link-btn {
   background: none;
-  color: white;
+  color: black;
   text-decoration: underline;
+}
+
+.link-btn:hover {
+  color: goldenrod;
 }
