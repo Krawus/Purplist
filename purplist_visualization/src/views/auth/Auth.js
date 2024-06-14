@@ -12,9 +12,9 @@ export const Auth = (props) => {
 
     const [currentForm, setCurrentForm] = useState(FORMS_TYPES["login"]);
     return (
-        <div className="auth-main">
-            <div className="auth-text">
-                <h2>
+        <div className="flex flex-row justify-around w-full">
+            <div className="hidden sm:block auth-text h-full self-center">
+                <h2 className={'justify-center h-full items-center align-middle'}>
                     Just <br/>
                     <span style={{"--i":0}} data-text="note"> note</span>
                     <span style={{"--i":1}} data-text="share"> share</span>

@@ -14,7 +14,7 @@ function App() {
   return (
     <div className='App'>
         <Auth />
-      {/* <Main></Main> */}
+       {/*<Main></Main>*/}
       {/* <Login path='/' /> */}
 
       {/* <BrowserRouter>
