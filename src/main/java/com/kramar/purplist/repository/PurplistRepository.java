@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kramar.purplist.entity.Purplist;
 
 @Repository
-public interface PurplistReository extends JpaRepository<Purplist, Integer>{
+public interface PurplistRepository extends JpaRepository<Purplist, Integer>{
     
 }
