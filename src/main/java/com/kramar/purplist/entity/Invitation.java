@@ -35,5 +35,5 @@ public class Invitation {
     private User receiver;
 
     @Column
-    Boolean accepted;
+    private Boolean accepted;
 }
