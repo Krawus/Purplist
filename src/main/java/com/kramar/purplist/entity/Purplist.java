@@ -52,7 +52,6 @@ public class Purplist {
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, Boolean> content;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "purplists")
     private List<User> users;
 

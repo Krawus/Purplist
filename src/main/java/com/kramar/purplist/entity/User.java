@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -81,5 +82,17 @@ public class User {
 
     }
 
-    
+    public void addSentInvitation(Invitation invitation){
+        if (this.sentInvitations == null){
+            sentInvitations = new ArrayList<Invitation>();
+        }
+        sentInvitations.add(invitation);
+    }
+
+    public void addReceivedInvitation(Invitation invitation){
+        if (this.receivedInvitations == null){
+            receivedInvitations = new ArrayList<Invitation>();
+        }
+        receivedInvitations.add(invitation);
+    }
 }

@@ -1,5 +1,10 @@
 package com.kramar.purplist.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +20,9 @@ import lombok.Setter;
 @Table(name="invitations")
 @Getter
 @Setter
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
 public class Invitation {
     
     @Id
@@ -26,6 +34,7 @@ public class Invitation {
     @JoinColumn(name = "purplist_id", nullable = false)
     private Purplist purplist;
 
+    @JsonIgnoreProperties({"password"})
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)
     private User sender;
