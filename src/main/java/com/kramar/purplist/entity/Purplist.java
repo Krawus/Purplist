@@ -22,7 +22,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -56,11 +55,9 @@ public class Purplist {
     @ManyToMany(mappedBy = "purplists")
     private List<User> users;
 
-    @OneToMany(mappedBy = "purplist")
-    private List<Invitation> invitations;
-
 
     public void addUser(User user){
+
         if(this.users == null){
             users = new ArrayList<User>();
         }
