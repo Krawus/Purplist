@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -17,6 +18,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,7 +48,13 @@ public class User {
     private String password;
 
     @Column(name = "enabled")
-    boolean enabled;
+    private boolean enabled;
+
+    @OneToMany(mappedBy = "sender")
+    private List<Invitation> sentInvitations;
+
+    @OneToMany(mappedBy = "receiver")
+    private List<Invitation> receivedInvitations;
 
     @ManyToMany
     @JoinTable(
@@ -74,5 +82,17 @@ public class User {
 
     }
 
-    
+    public void addSentInvitation(Invitation invitation){
+        if (this.sentInvitations == null){
+            sentInvitations = new ArrayList<Invitation>();
+        }
+        sentInvitations.add(invitation);
+    }
+
+    public void addReceivedInvitation(Invitation invitation){
+        if (this.receivedInvitations == null){
+            receivedInvitations = new ArrayList<Invitation>();
+        }
+        receivedInvitations.add(invitation);
+    }
 }
