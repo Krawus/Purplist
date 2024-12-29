@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,7 +47,13 @@ public class User {
     private String password;
 
     @Column(name = "enabled")
-    boolean enabled;
+    private boolean enabled;
+
+    @OneToMany(mappedBy = "sender")
+    private List<Invitation> sentInvitations;
+
+    @OneToMany(mappedBy = "receiver")
+    private List<Invitation> receivedInvitations;
 
     @ManyToMany
     @JoinTable(
