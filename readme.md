@@ -46,8 +46,8 @@ To create the database needed to run the project, run the ```create_database_for
 
 
 #### Potential future work
-- [] Registration with password validation
-- [] Assigning roles to individual list members (admin/viewer/editor)
+- [ ] Registration with password validation
+- [ ] Assigning roles to individual list members (admin/viewer/editor)
 
 
 
